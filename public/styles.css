@@ -1,0 +1,171 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f4f9;
+    color: #333;
+}
+
+/* Encabezado */
+
+#encabezado {
+    background-color: #173b67;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+#encabezado h1 {
+    margin-bottom: 8px;
+}
+
+/* Contenedor principal */
+
+#contenedor-principal {
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto;
+
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 25px;
+
+    align-items: start;
+}
+
+/* Tarjetas */
+
+.tarjeta {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta h2 {
+    margin-bottom: 20px;
+    color: #173b67;
+}
+
+/* Formulario */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+form input {
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #2878c7;
+}
+
+.acciones-formulario {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+#btn-enviar {
+    background-color: #1769aa;
+    color: white;
+}
+
+.btn-cancelar {
+    background-color: #777;
+    color: white;
+}
+
+/* Tabla */
+
+.contenedor-tabla {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+th, td {
+    padding: 13px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #173b67;
+    color: white;
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color: #edf4fc;
+}
+
+/* Acciones de los registros */
+
+.btn-editar {
+    background-color: #e6a23c;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+}
+
+#mensaje {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Adaptación a móviles */
+
+@media (max-width: 800px) {
+
+    #contenedor-principal {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta {
+        width: 100%;
+    }
+
+}

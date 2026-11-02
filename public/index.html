@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de estudiantes</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header id="encabezado">
+        <h1>Gestión de estudiantes</h1>
+        <p>Sistema de registro de estudiantes</p>
+    </header>
+
+    <main id="contenedor-principal">
+
+        <section id="formulario" class="tarjeta">
+
+            <h2 id="titulo-formulario">Ingrese sus datos</h2>
+
+            <form id="form-estudiantes">
+
+                <!-- Identificador del estudiante -->
+                <input type="hidden" id="id">
+
+                <label for="nombre">Nombre</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ingrese su nombre"
+                    required
+                >
+
+                <label for="matricula">Matrícula</label>
+                <input
+                    type="text"
+                    id="matricula"
+                    name="matricula"
+                    placeholder="Ingrese su matrícula"
+                    required
+                >
+
+                <label for="carrera">Carrera</label>
+                <input
+                    type="text"
+                    id="carrera"
+                    name="carrera"
+                    placeholder="Ingrese su carrera"
+                    required
+                >
+
+                <div class="acciones-formulario">
+
+                    <button type="submit" id="btn-enviar">
+                        Guardar estudiante
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btn-cancelar"
+                        class="btn-cancelar"
+                        hidden
+                    >
+                        Cancelar edición
+                    </button>
+
+                </div>
+
+            </form>
+
+            <p id="mensaje"></p>
+
+        </section>
+
+        <section id="tabla" class="tarjeta">
+
+            <h2>Estudiantes registrados</h2>
+
+            <div class="contenedor-tabla">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Matrícula</th>
+                            <th>Carrera</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-estudiantes">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

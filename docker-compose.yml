@@ -1,0 +1,65 @@
+
+services:
+
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    command: npm run dev
+
+    container_name: api-estudiantes
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      PORT: 3000
+
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: "123456"
+      DB_NAME: gestion_estudiantes
+
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.4
+
+    container_name: mysql-estudiantes
+
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: gestion_estudiantes
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+    healthcheck:
+      test:
+        - CMD
+        - healthcheck.sh
+        - --connect
+        - --innodb_initialized
+
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  mysql_data:
+
