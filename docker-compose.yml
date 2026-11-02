@@ -1,12 +1,9 @@
-
 services:
 
   app:
     build:
       context: ./backend
       dockerfile: Dockerfile
-
-    command: npm run dev
 
     container_name: api-estudiantes
 
@@ -17,13 +14,14 @@ services:
 
     environment:
       PORT: 3000
-
       DB_HOST: db
       DB_USER: root
       DB_PASSWORD: "123456"
       DB_NAME: gestion_estudiantes
 
     volumes:
+      - .:/workspace
+      - ./public:/public:ro
       - ./backend:/app
       - /app/node_modules
 
@@ -51,15 +49,12 @@ services:
 
     healthcheck:
       test:
-        - CMD
-        - healthcheck.sh
-        - --connect
-        - --innodb_initialized
-
+        - CMD-SHELL
+        - mysqladmin ping -h 127.0.0.1 -uroot -p"$${MYSQL_ROOT_PASSWORD}" --silent
       interval: 5s
       timeout: 5s
       retries: 20
+      start_period: 60s
 
 volumes:
   mysql_data:
-
